@@ -86,7 +86,10 @@ const exposeToPlugin = (modules: Module[]) => {
   // Wait for import map
   SystemJS.prepareImport().then(() => {
     // `resolve` is needed because module keys must be URLs
-    modules.forEach(([key, value]) => SystemJS.set(SystemJS.resolve(key), value));
+    modules.forEach(([key, value]) => {
+      console.log('wtf', key, value);
+      SystemJS.set(SystemJS.resolve(key), value);
+    });
   });
 };
 
